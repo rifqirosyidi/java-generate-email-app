@@ -5,10 +5,12 @@ import java.util.Scanner;
 public class Email {
 	private String firstName;
 	private String lastName;
+	private String email;
 	private String password;
 	private String department;
-	private int mailboxCapacity;
-	private String alternateEmail;
+	private int mailboxCapacity = 500;
+	private String altEmail;
+	private String companyName = "company.com";
 	
 	// Constructor to receive first name and last name
 	public Email(String firstName, String lastName) {
@@ -23,6 +25,16 @@ public class Email {
 		// Call method to return Random Password
 		this.password = setRandomPassword(8);
 		System.out.println("YOUR PASSWORD : " + this.password);
+		
+		// Generate Email
+		if(this.department == "sales" || this.department == "dev" || this.department == "account") {
+			email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + this.department + "." + companyName;
+			System.out.println("YOUR EMAIL IS : " + email);
+		} else {
+			email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + companyName;
+			System.out.println("YOUR EMAIL IS : " + email);
+		}
+		
 	}
 	
 	// Ask for the department
@@ -32,7 +44,7 @@ public class Email {
 		int depChoice = in.nextInt();
 		if (depChoice == 1) { return "sales"; }
 		else if (depChoice == 2) { return "dev"; }
-		else if (depChoice == 3) { return "accounting"; }
+		else if (depChoice == 3) { return "account"; }
 		else { return ""; }
 	}	
 	
@@ -48,9 +60,24 @@ public class Email {
 	}
 	
 	// See mailbox capacity
+	public void setMailboxCap(int mailboxCapacity) {
+		this.mailboxCapacity = mailboxCapacity;
+	}
 	
 	// See alternate email
+	public void settAlternateEmail(String altEmail) {
+		this.altEmail = altEmail;
+	}
 	
 	// Change password
-
+	public void changePassword(String password) {
+		this.password = password;
+	}
+	
+	// Getter
+	public int getMailboxCap() { return mailboxCapacity; }
+	public String getAlternativeEmail() { return altEmail; }
+	public Strin getPassword() { return password; }
 }
+	
+	
