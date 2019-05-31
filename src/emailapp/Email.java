@@ -16,30 +16,25 @@ public class Email {
 	public Email(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		System.out.println("EMAIL CREATED " + this.firstName + " " + this.lastName);
 	
 		// Ask the department name from department Method
 		this.department = setDepartment();
-		System.out.println("DEPARTMENT : " + this.department);
 		
 		// Call method to return Random Password
 		this.password = setRandomPassword(8);
-		System.out.println("YOUR PASSWORD : " + this.password);
 		
 		// Generate Email
 		if(this.department == "sales" || this.department == "dev" || this.department == "account") {
 			email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + this.department + "." + companyName;
-			System.out.println("YOUR EMAIL IS : " + email);
 		} else {
 			email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + companyName;
-			System.out.println("YOUR EMAIL IS : " + email);
 		}
 		
 	}
 	
 	// Ask for the department
 	private String setDepartment() {
-		System.out.println("DEPARTMENT CODE :\n1 for sales\n2 for dev\n3 for Accounting\n0 for none\nEnter Your Department : ");
+		System.out.println("DEPARTMENT CODE FOR " + firstName + " " + lastName + " :\n1 for sales\n2 for dev\n3 for Accounting\n0 for none\nEnter Your Department : ");
 		Scanner in = new Scanner(System.in);
 		int depChoice = in.nextInt();
 		if (depChoice == 1) { return "sales"; }
@@ -65,7 +60,7 @@ public class Email {
 	}
 	
 	// See alternate email
-	public void settAlternateEmail(String altEmail) {
+	public void setAlternateEmail(String altEmail) {
 		this.altEmail = altEmail;
 	}
 	
@@ -76,8 +71,15 @@ public class Email {
 	
 	// Getter
 	public int getMailboxCap() { return mailboxCapacity; }
-	public String getAlternativeEmail() { return altEmail; }
-	public Strin getPassword() { return password; }
+	public String getAlternateEmail() { return altEmail; }
+	public String getPassword() { return password; }
+	
+	public String showInfo() {
+		return "DISPLAY NAME : " + firstName + lastName +
+				"\nYOUR PASSWORD : " + password +
+				"\nCOMPANY EMAIL : " + email +
+				"\nMAILBOX CAP : " + mailboxCapacity;
+	}
 }
 	
 	
